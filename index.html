@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aweaq Studio | Social Media Video Editing</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: '#050505',
+            surface: '#121212',
+            primary: '#ffffff',
+            muted: '#a1a1aa',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Required Import Map for the environment (ignored by pure HTML) -->
+  
+  <style>
+    body {
+      background-color: #050505;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body class="selection:bg-white/30 selection:text-white">
+  
+  <!-- React Mount Point (Left empty as we are using pure HTML) -->
+  <div id="root"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-6">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="logo.png" alt="Aweaq Studio Logo" class="w-10 h-10 object-contain transition-transform group-hover:scale-110 duration-300" />
+        <span class="text-xl font-bold tracking-wider uppercase">Aweaq Studio</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <div class="flex gap-6">
+          <a href="#portfolio" class="text-sm font-medium text-muted hover:text-white transition-colors">Portfolio</a>
+          <a href="#services" class="text-sm font-medium text-muted hover:text-white transition-colors">Services</a>
+          <a href="#features" class="text-sm font-medium text-muted hover:text-white transition-colors">Why Us</a>
+        </div>
+        <a href="https://wa.me/77470377651" target="_blank" class="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full font-medium transition-all duration-300 ease-out hover:scale-105 active:scale-95 border border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+          <span>Get a Quote</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-surface border-b border-white/10 p-6 flex flex-col gap-4 shadow-2xl">
+      <a href="#portfolio" class="text-lg font-medium text-white py-2 border-b border-white/5">Portfolio</a>
+      <a href="#services" class="text-lg font-medium text-white py-2 border-b border-white/5">Services</a>
+      <a href="#features" class="text-lg font-medium text-white py-2 border-b border-white/5">Why Us</a>
+      <div class="pt-4">
+        <a href="https://wa.me/77470377651" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-out hover:scale-105 active:scale-95 bg-white text-black hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+          <span>Get a Quote</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <!-- Background Video & Effects -->
+      <div class="absolute inset-0 w-full h-full bg-background z-0">
+        <video autoPlay loop muted playsInline class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen">
+          <source src="https://cdn.pixabay.com/video/2020/05/25/40131-424917410_large.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] opacity-50 pointer-events-none"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-8 backdrop-blur-sm">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          Available for new projects
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+          Scroll-Stopping <br class="hidden md:block" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">
+            Video Editing
+          </span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-muted max-w-2xl mb-10 leading-relaxed">
+          We transform raw footage into highly engaging content tailored for social media. 
+          Boost your reach, retention, and brand identity with professional editing.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 items-center">
+          <a href="https://wa.me/77470377651" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-out hover:scale-105 active:scale-95 bg-white text-black hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+            <span>Start Your Project</span>
+          </a>
+          <button id="open-modal" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-white hover:text-gray-300 transition-colors group">
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </div>
+            Watch Showreel
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 relative bg-surface/20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-5xl font-bold mb-4">Our Recent Work</h2>
+          <p class="text-muted max-w-2xl mx-auto">
+            A showcase of our best edits across different formats and platforms.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <!-- Long Form Video -->
+          <div class="md:col-span-8 group relative bg-surface border border-white/10 rounded-2xl overflow-hidden hover:border-white/30 transition-all duration-500">
+            <div class="w-full aspect-video relative bg-black">
+              <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/LXb3EKWsInQ?rel=0&modestbranding=1" title="Cinematic Travel Vlog" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="p-5 border-t border-white/5 bg-surface/90 backdrop-blur-md absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
+              <h3 class="text-lg font-semibold text-white">Cinematic Travel Vlog</h3>
+              <p class="text-sm text-muted capitalize">long Form Video</p>
+            </div>
+          </div>
+
+          <!-- Short Form Video -->
+          <div class="md:col-span-4 group relative bg-surface border border-white/10 rounded-2xl overflow-hidden hover:border-white/30 transition-all duration-500">
+            <div class="w-full aspect-[9/16] relative bg-black">
+              <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/aqz-KE-bpKQ?rel=0&modestbranding=1" title="Viral TikTok Edit" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="p-5 border-t border-white/5 bg-surface/90 backdrop-blur-md absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
+              <h3 class="text-lg font-semibold text-white">Viral TikTok Edit</h3>
+              <p class="text-sm text-muted capitalize">short Form Video</p>
+            </div>
+          </div>
+
+          <!-- Short Form Video -->
+          <div class="md:col-span-4 group relative bg-surface border border-white/10 rounded-2xl overflow-hidden hover:border-white/30 transition-all duration-500">
+            <div class="w-full aspect-[9/16] relative bg-black">
+              <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/7C2z4GqqS5E?rel=0&modestbranding=1" title="Engaging Podcast Clip" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="p-5 border-t border-white/5 bg-surface/90 backdrop-blur-md absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
+              <h3 class="text-lg font-semibold text-white">Engaging Podcast Clip</h3>
+              <p class="text-sm text-muted capitalize">short Form Video</p>
+            </div>
+          </div>
+
+          <!-- Long Form Video -->
+          <div class="md:col-span-8 group relative bg-surface border border-white/10 rounded-2xl overflow-hidden hover:border-white/30 transition-all duration-500">
+            <div class="w-full aspect-video relative bg-black">
+              <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1" title="Dynamic Tech Review" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="p-5 border-t border-white/5 bg-surface/90 backdrop-blur-md absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
+              <h3 class="text-lg font-semibold text-white">Dynamic Tech Review</h3>
+              <p class="text-sm text-muted capitalize">long Form Video</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative bg-surface/30 border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-5xl font-bold mb-4">Simple, Transparent Pricing</h2>
+          <p class="text-muted max-w-2xl mx-auto">
+            Tailored specifically for content creators and brands dominating social media.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          
+          <!-- Short Form Card -->
+          <div class="group relative bg-surface border border-white/10 rounded-3xl p-8 hover:border-white/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110"></div>
+            
+            <div class="flex items-center gap-4 mb-6">
+              <div class="p-3 bg-white/10 rounded-2xl text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold">Short Form</h3>
+                <p class="text-muted text-sm">Vertical (9:16)</p>
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <span class="text-sm text-muted">Starting from</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-5xl font-bold">$10</span>
+                <span class="text-muted">/ video</span>
+              </div>
+            </div>
+            
+            <p class="text-gray-400 mb-8 h-12">
+              Perfect for TikTok, Instagram Reels, and YouTube Shorts. Fast-paced and engaging.
+            </p>
+            
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3 text-sm text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Dynamic captions & subtitles</span>
+              </li>
+              <li class="flex items-start gap-3 text-sm text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Trending transitions & effects</span>
+              </li>
+              <li class="flex items-start gap-3 text-sm text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Sound design & music mixing</span>
+              </li>
+              <li class="flex items-start gap-3 text-sm text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Color correction</span>
+              </li>
+            </ul>
+            
+            <a href="https://wa.me/77470377651" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-out hover:scale-105 active:scale-95 border border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+              <span>Order Short Video</span>
+            </a>
+          </div>
+
+          <!-- Long Form Card -->
+          <div class="group relative bg-gradient-to-b from-white/10 to-surface border border-white/20 rounded-3xl p-8 hover:border-white/40 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110"></div>
+            
+            <div class="flex items-center gap-4 mb-6">
+              <div class="p-3 bg-white text-black rounded-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="m10 10 5 3-5 3z"/></svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold">Long Form</h3>
+                <p class="text-muted text-sm">Horizontal (16:9)</p>
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <span class="text-sm text-muted">Starting from</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-5xl font-bold">$25</span>
+                <span class="text-muted">/ video</span>
+              </div>
+            </div>
+            
+            <p class="text-gray-400 mb-8 h-12">
+              Ideal for YouTube videos, podcasts, and vlogs. Professional storytelling and pacing.
+            </p>
+            
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3 text-sm text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Multi-cam editing</span>
+              </li>
+              <li class="flex items-start gap-3 text-sm text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Advanced color grading</span>
+              </li>
+              <li class="flex items-start gap-3 text-sm text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>B-roll sourcing & integration</span>
+              </li>
+              <li class="flex items-start gap-3 text-sm text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Audio cleanup & enhancement</span>
+              </li>
+            </ul>
+            
+            <a href="https://wa.me/77470377651" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-out hover:scale-105 active:scale-95 bg-white text-black hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+              <span>Order Long Video</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-16 md:w-1/2">
+          <h2 class="text-3xl md:text-5xl font-bold mb-6">Why Aweaq Studio?</h2>
+          <p class="text-muted text-lg">
+            We don't just cut clips together; we craft stories that resonate with your audience and elevate your digital presence.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-surface/50 border border-white/5 p-6 rounded-2xl hover:bg-surface transition-colors duration-300">
+            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Social Media Native</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              We understand the algorithms. Our edits are designed to maximize retention and engagement on modern platforms.
+            </p>
+          </div>
+          
+          <div class="bg-surface/50 border border-white/5 p-6 rounded-2xl hover:bg-surface transition-colors duration-300">
+            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">High-Impact Style</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              From subtle pacing to flashy effects, we tailor the editing style to match your brand's unique voice.
+            </p>
+          </div>
+
+          <div class="bg-surface/50 border border-white/5 p-6 rounded-2xl hover:bg-surface transition-colors duration-300">
+            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Fast Turnaround</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Content moves fast, and so do we. Get your videos back quickly without compromising on quality.
+            </p>
+          </div>
+
+          <div class="bg-surface/50 border border-white/5 p-6 rounded-2xl hover:bg-surface transition-colors duration-300">
+            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Collaborative Process</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              We work closely with you. Your feedback is integral to delivering a final product you love.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface border-t border-white/10 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+        <div class="flex flex-col items-center md:items-start gap-4">
+          <div class="flex items-center gap-3">
+            <img src="logo.png" alt="Aweaq Studio Logo" class="w-8 h-8 object-contain" />
+            <span class="text-xl font-bold tracking-wider uppercase">Aweaq Studio</span>
+          </div>
+          <p class="text-muted text-sm text-center md:text-left max-w-xs">
+            Elevating your social media presence through professional video editing.
+          </p>
+        </div>
+        
+        <div class="flex flex-col items-center md:items-end gap-4">
+          <h4 class="font-semibold text-white">Ready to start?</h4>
+          <a href="https://wa.me/77470377651" target="_blank" class="text-2xl font-bold hover:text-gray-300 transition-colors underline decoration-white/30 underline-offset-8">
+            Let's talk on WhatsApp
+          </a>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted">
+        <p>&copy; <span id="year"></span> Aweaq Studio. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Showreel Modal -->
+  <div id="showreel-modal" class="hidden fixed inset-0 z-[100] items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-10">
+    <button id="close-modal" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 bg-white/10 rounded-full z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <div class="w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative">
+      <iframe id="showreel-iframe" class="absolute inset-0 w-full h-full" src="" title="Aweaq Studio Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Vanilla JS for Interactivity -->
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 20) {
+        nav.classList.add('bg-background/90', 'backdrop-blur-md', 'border-b', 'border-white/10', 'py-4');
+        nav.classList.remove('bg-transparent', 'py-6');
+      } else {
+        nav.classList.remove('bg-background/90', 'backdrop-blur-md', 'border-b', 'border-white/10', 'py-4');
+        nav.classList.add('bg-transparent', 'py-6');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+
+    // Showreel Modal logic
+    const modal = document.getElementById('showreel-modal');
+    const openModalBtn = document.getElementById('open-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const iframe = document.getElementById('showreel-iframe');
+
+    openModalBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      // Set src with autoplay when opened
+      iframe.src = "https://www.youtube.com/embed/LXb3EKWsInQ?autoplay=1&mute=0";
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      // Remove src to stop video playback
+      iframe.src = "";
+    });
+  </script>
+<script type="module" src="/index.js"></script></body>
+</html>
