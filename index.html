@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aweaq Studio | Social Media Video Editing</title>
+  <title>Awaeq Studio | Social Media Video Editing</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="logo.png" type="image/png" />
   
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,8 +30,6 @@
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Required Import Map for the environment (ignored by pure HTML) -->
   
   <style>
     body {
@@ -54,7 +55,6 @@
 </head>
 <body class="selection:bg-white/30 selection:text-white">
   
-  <!-- React Mount Point (Left empty as we are using pure HTML) -->
   <div id="root"></div>
 
   <!-- Navigation -->
@@ -63,8 +63,8 @@
       
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group">
-        <img src="logo.png" alt="Aweaq Studio Logo" class="w-10 h-10 object-contain transition-transform group-hover:scale-110 duration-300" />
-        <span class="text-xl font-bold tracking-wider uppercase">Aweaq Studio</span>
+        <img src="logo.png" alt="Awaeq Studio Logo" class="w-10 h-10 object-contain transition-transform group-hover:scale-110 duration-300" />
+        <span class="text-xl font-bold tracking-wider uppercase">Awaeq Studio</span>
       </a>
 
       <!-- Desktop Nav -->
@@ -156,7 +156,9 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- ИЗМЕНЕНИЕ ЗДЕСЬ: Добавлен класс items-center -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          
           <!-- Long Form Video -->
           <div class="md:col-span-8 group relative bg-surface border border-white/10 rounded-2xl overflow-hidden hover:border-white/30 transition-all duration-500">
             <div class="w-full aspect-video relative bg-black">
@@ -326,7 +328,7 @@
     <section id="features" class="py-24 relative">
       <div class="max-w-7xl mx-auto px-6">
         <div class="mb-16 md:w-1/2">
-          <h2 class="text-3xl md:text-5xl font-bold mb-6">Why Aweaq Studio?</h2>
+          <h2 class="text-3xl md:text-5xl font-bold mb-6">Why Awaeq Studio?</h2>
           <p class="text-muted text-lg">
             We don't just cut clips together; we craft stories that resonate with your audience and elevate your digital presence.
           </p>
@@ -383,8 +385,8 @@
       <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
         <div class="flex flex-col items-center md:items-start gap-4">
           <div class="flex items-center gap-3">
-            <img src="logo.png" alt="Aweaq Studio Logo" class="w-8 h-8 object-contain" />
-            <span class="text-xl font-bold tracking-wider uppercase">Aweaq Studio</span>
+            <img src="logo.png" alt="Awaeq Studio Logo" class="w-8 h-8 object-contain" />
+            <span class="text-xl font-bold tracking-wider uppercase">Awaeq Studio</span>
           </div>
           <p class="text-muted text-sm text-center md:text-left max-w-xs">
             Elevating your social media presence through professional video editing.
@@ -400,11 +402,7 @@
       </div>
       
       <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted">
-        <p>&copy; <span id="year"></span> Aweaq Studio. All rights reserved.</p>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-        </div>
+        <p>&copy; <span id="year"></span> Awaeq Studio. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -415,16 +413,14 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
     </button>
     <div class="w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative">
-      <iframe id="showreel-iframe" class="absolute inset-0 w-full h-full" src="" title="Aweaq Studio Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id="showreel-iframe" class="absolute inset-0 w-full h-full" src="" title="Awaeq Studio Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 
   <!-- Vanilla JS for Interactivity -->
   <script>
-    // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Navbar scroll effect
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('navbar');
       if (window.scrollY > 20) {
@@ -436,7 +432,6 @@
       }
     });
 
-    // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
@@ -448,7 +443,6 @@
       closeIcon.classList.toggle('hidden');
     });
 
-    // Close mobile menu on link click
     document.querySelectorAll('#mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
@@ -457,7 +451,6 @@
       });
     });
 
-    // Showreel Modal logic
     const modal = document.getElementById('showreel-modal');
     const openModalBtn = document.getElementById('open-modal');
     const closeModalBtn = document.getElementById('close-modal');
@@ -466,14 +459,12 @@
     openModalBtn.addEventListener('click', () => {
       modal.classList.remove('hidden');
       modal.classList.add('flex');
-      // Set src with autoplay when opened
       iframe.src = "https://www.youtube.com/embed/LXb3EKWsInQ?autoplay=1&mute=0";
     });
 
     closeModalBtn.addEventListener('click', () => {
       modal.classList.add('hidden');
       modal.classList.remove('flex');
-      // Remove src to stop video playback
       iframe.src = "";
     });
   </script>
